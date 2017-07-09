@@ -1,35 +1,29 @@
 import {BrowserModule} from '@angular/platform-browser';
+import {FormsModule} from '@angular/forms';
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router'
-
+import {MainComponent, LoginComponent} from './views'
+import HomeComponent from './views/home'
 import {AppComponent} from './app.component';
-import {SidebarComponent} from './views/sidebar/sidebar.component';
-import {HeaderComponent} from './views/header/header.component';
-
-import {FooterComponent} from './views/footer/footer.component';
-import {ControlSidebarComponent} from './views/control-sidebar/control-sidebar.component';
-import {ContentPanelComponent} from './views/content-panel/content-panel.component';
-import {MainComponent} from './views/main.component';
-import {LoginComponent} from './views/login/login.component';
-
-export const ROUTES: Routes = [
-  {path: '', component: MainComponent},
-  {path: 'login', component: LoginComponent}
-];
+import {appRouting} from './app.router';
+import {TestComponent} from './views/product/test/test.component';
+import {ButtonComponent} from './ui/button/button.component';
+import { ButtonsComponent } from './views/component_preview/buttons/buttons.component';
+import { GeneratorComponent } from './generator/generator.component';
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent,
-    HeaderComponent,
-    FooterComponent,
-    ControlSidebarComponent,
-    ContentPanelComponent,
+    HomeComponent,
     MainComponent,
-    LoginComponent
+    LoginComponent,
+    TestComponent,
+    ButtonComponent,
+    ButtonsComponent,
+    GeneratorComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(ROUTES)
+    FormsModule,
+    appRouting
   ],
   providers: [],
   bootstrap: [AppComponent]
