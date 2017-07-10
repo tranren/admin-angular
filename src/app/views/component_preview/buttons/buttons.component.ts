@@ -1,20 +1,32 @@
-import {Component, OnInit} from '@angular/core';
-
+import {
+  Component,
+  OnInit,
+  ComponentFactoryResolver,
+  ViewChild,
+  ViewContainerRef, AfterContentInit
+} from '@angular/core';
+import {GenerateHtmlService} from '../../../app.service';
+import {ButtonComponent} from '../../../ui/button/button.component'
 @Component({
   selector: 'app-buttons',
   templateUrl: './buttons.component.html',
   styleUrls: ['./buttons.component.scss']
 })
-export class ButtonsComponent implements OnInit {
 
+
+export class ButtonsComponent implements OnInit, AfterContentInit {
+  @ViewChild('test', {read: ViewContainerRef}) test: ViewContainerRef;
   btnName: string;
   btnClass: string;
   btnClick: Function;
   btnDisabled: boolean;
   previewConfig: Config;
+  data: string;
 
-  constructor() {
+  constructor(private _generateHtmlService: GenerateHtmlService, private cfr: ComponentFactoryResolver) {
+    this.data = `<button>sasa</button>`// _generateHtmlService.getHtml()
   }
+
 
   ngOnInit() {
     this.btnName = 'button';
@@ -25,6 +37,15 @@ export class ButtonsComponent implements OnInit {
     this.btnDisabled = false;
 
     this.previewConfig = new Config(false, 'btn-default', false);
+  }
+
+  ngAfterContentInit() {
+    this.addComponent()
+  }
+
+  addComponent() {
+    const com = this.cfr.resolveComponentFactory(ButtonComponent)
+    this.test.createComponent(com)
   }
 
   _onChange(e) {
