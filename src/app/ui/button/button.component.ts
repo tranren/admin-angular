@@ -5,12 +5,10 @@ import {Component, OnInit, Input} from '@angular/core';
   styleUrls: ['./button.component.css']
 })
 export class ButtonComponent implements OnInit {
-  @Input()
-  ngName: string;
-  @Input()
-  ngClasses: string;
-  @Input()
-  ngClick: any;
+  @Input() ngName: string;
+  @Input() ngClasses: string;
+  @Input() ngClick: Function;
+  @Input() ngDisabled: boolean;
 
   ngOnInit() {
     /*this.ngBtnName = this.ngName;
@@ -18,4 +16,9 @@ export class ButtonComponent implements OnInit {
      this.ngBtnClick = ngClass;*/
   }
 
+  _ngClick() {
+    this.ngClick();
+  }
+
 }
+
