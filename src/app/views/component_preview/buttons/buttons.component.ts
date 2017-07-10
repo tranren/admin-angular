@@ -17,10 +17,10 @@ export class ButtonsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.btnName = '按钮';
+    this.btnName = 'button';
     this.btnClass = 'btn-default';
     this.btnClick = function () {
-      alert('这是一个按钮');
+      alert('this is a button');
     };
     this.btnDisabled = false;
 
